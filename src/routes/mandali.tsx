@@ -165,10 +165,11 @@ function InMandaliView() {
   const activeMembers = members.filter((m) => m.todayCount > 0).length;
 
   const onInvite = async () => {
-    const appLink =
-      typeof window !== "undefined"
-        ? `${window.location.origin}/mandali`
-        : "https://sumiran.app";
+    // Always share the public production URL — never localhost or capacitor://
+    const PUBLIC_URL =
+      (import.meta.env.VITE_PUBLIC_APP_URL as string | undefined) ||
+      "https://sumiran-peaceful-practice.lovable.app";
+    const appLink = `${PUBLIC_URL.replace(/\/$/, "")}/mandali`;
     const message =
       `🙏 Join our Jaap Mandali on Sumiran\n\n` +
       `We are doing daily mantra chanting together.\n\n` +
