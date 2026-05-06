@@ -1,0 +1,248 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sumiran (सुमिरन) — Spiritual Habit App Design System
+ * Premium Indian spiritual feel. Mobile-first. High contrast for sunlight.
+ * NO pure white. All colors use oklch.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Sumiran brand tokens */
+  --color-saffron: var(--saffron);
+  --color-saffron-deep: var(--saffron-deep);
+  --color-maroon: var(--maroon);
+  --color-cream: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+
+  --font-display: "Tiro Devanagari Hindi", serif;
+  --font-sans: "Hind", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --shadow-soft: 0 2px 8px -2px color-mix(in oklab, var(--maroon) 12%, transparent);
+  --shadow-elevated: 0 8px 24px -8px color-mix(in oklab, var(--maroon) 18%, transparent);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Brand */
+  --saffron: oklch(0.7 0.19 45);          /* #FF6B00 */
+  --saffron-deep: oklch(0.62 0.2 40);
+  --maroon: oklch(0.38 0.15 25);          /* #8B0000 */
+  --cream: oklch(0.97 0.018 85);          /* #FDF6EC */
+  --cream-deep: oklch(0.94 0.025 80);     /* slightly deeper cream */
+  --gold: oklch(0.74 0.13 80);            /* #D4A017 */
+  --gold-soft: oklch(0.86 0.08 85);
+
+  /* Semantic */
+  --background: var(--cream);
+  --foreground: oklch(0.22 0.03 30);      /* warm dark brown — not pure black */
+  --card: oklch(0.985 0.012 85);          /* off-cream card surface */
+  --card-foreground: oklch(0.22 0.03 30);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--saffron);
+  --primary-foreground: oklch(0.99 0.01 85);
+  --secondary: oklch(0.92 0.02 80);
+  --secondary-foreground: var(--maroon);
+  --muted: oklch(0.93 0.02 80);
+  --muted-foreground: oklch(0.45 0.04 35);
+  --accent: var(--gold-soft);
+  --accent-foreground: var(--maroon);
+  --destructive: oklch(0.55 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 85);
+  --border: oklch(0.88 0.025 75);
+  --input: oklch(0.9 0.02 80);
+  --ring: var(--saffron);
+}
+
+.dark {
+  --background: oklch(0.22 0.03 30);
+  --foreground: oklch(0.96 0.018 85);
+  --card: oklch(0.27 0.035 30);
+  --card-foreground: oklch(0.96 0.018 85);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--saffron);
+  --primary-foreground: oklch(0.99 0.01 85);
+  --secondary: oklch(0.32 0.04 30);
+  --secondary-foreground: oklch(0.96 0.018 85);
+  --muted: oklch(0.3 0.03 30);
+  --muted-foreground: oklch(0.75 0.03 60);
+  --accent: oklch(0.4 0.08 60);
+  --accent-foreground: oklch(0.96 0.018 85);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.99 0.01 85);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--saffron);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    /* Elderly-friendly base font size — bumps every rem-based size by ~12.5% */
+    font-size: 18px;
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+    line-height: 1.55;
+  }
+
+  body {
+    min-height: 100dvh;
+    /* Subtle mandala / lotus pattern — extremely low opacity */
+    background-image:
+      radial-gradient(circle at 50% 0%, color-mix(in oklab, var(--saffron) 8%, transparent) 0%, transparent 55%),
+      radial-gradient(circle at 50% 100%, color-mix(in oklab, var(--gold) 7%, transparent) 0%, transparent 55%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='none' stroke='%238B0000' stroke-opacity='0.05' stroke-width='1'><circle cx='80' cy='80' r='28'/><circle cx='80' cy='80' r='44'/><circle cx='80' cy='80' r='60'/><path d='M80 20 L80 140 M20 80 L140 80 M38 38 L122 122 M122 38 L38 122'/></g></svg>");
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .font-mantra {
+    font-family: var(--font-display);
+    line-height: 1.5;
+  }
+
+  .font-counter {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+  }
+
+  /* Min 48px tap targets globally for interactive elements */
+  button, a[role="button"], [data-tap] {
+    min-height: 48px;
+  }
+}
+
+@layer utilities {
+  .safe-top { padding-top: env(safe-area-inset-top); }
+  .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+  .safe-x {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+@keyframes sumiran-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sumiran-tap {
+  0%   { transform: translate(-50%, -50%) scale(1); }
+  40%  { transform: translate(-50%, -50%) scale(0.965); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes sumiran-tap-scale {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.965); }
+  100% { transform: scale(1); }
+}
+
+@keyframes sumiran-ripple {
+  0%   { opacity: 0.0; transform: scale(0.85); }
+  35%  { opacity: 0.9; }
+  100% { opacity: 0;   transform: scale(1.15); }
+}
+
+
+@keyframes sumiran-fade {
+  0%   { opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes sumiran-rise {
+  0%   { opacity: 0; transform: translateY(12px) scale(0.96); }
+  25%  { opacity: 1; transform: translateY(0) scale(1); }
+  85%  { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-6px) scale(1.02); }
+}
+
+@keyframes sumiran-splash-logo {
+  0%   { opacity: 0; transform: scale(0.8); }
+  40%  { opacity: 1; transform: scale(1.04); }
+  60%  { transform: scale(1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sumiran-splash-text {
+  0%   { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sumiran-splash-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%      { opacity: 0.85; transform: scale(1.06); }
+}
+
+@keyframes sumiran-splash-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [style*="sumiran-spin"],
+  [style*="sumiran-tap"],
+  [style*="sumiran-tap-scale"],
+  [style*="sumiran-ripple"],
+  [style*="sumiran-fade"],
+  [style*="sumiran-rise"],
+  [style*="sumiran-splash-logo"],
+  [style*="sumiran-splash-text"],
+  [style*="sumiran-splash-glow"],
+  [style*="sumiran-splash-out"] { animation: none !important; }
+}
+

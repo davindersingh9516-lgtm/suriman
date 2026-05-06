@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Sumiran</string>
+    <string name="title_activity_main">Sumiran</string>
+    <string name="package_name">app.sumiran.android</string>
+    <string name="custom_url_scheme">app.sumiran.android</string>
+</resources>
