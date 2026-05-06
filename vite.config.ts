@@ -35,5 +35,6 @@ export default defineConfig({
     host: "::",
     port: 5173,
   },
-  base: "./", 
+/*   base: "./",  */
+base: "/",
 });
